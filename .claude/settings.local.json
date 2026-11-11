@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install:*)",
+      "Bash(mkdir -p \"C:\\\\Users\\\\juans\\\\OneDrive\\\\Documentos\\\\JM\\\\Portfolio\\\\src\\\\components\")",
+      "Bash(mkdir -p \"C:\\\\Users\\\\juans\\\\OneDrive\\\\Documentos\\\\JM\\\\Portfolio\\\\src\\\\cases\")",
+      "Bash(npm run:*)"
+    ]
+  }
+}
