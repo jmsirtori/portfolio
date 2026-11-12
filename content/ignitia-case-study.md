@@ -6,6 +6,8 @@
 
 ---
 
+<!-- publish:start -->
+
 # An AI audit tool, and the QA process that keeps it honest
 
 **Role:** Solo. Discovery, design, build and testing, with Claude as coding partner and tutor
@@ -114,6 +116,8 @@ None of these broke the experience or reached a client, because I review every r
 ## 08 · Reflection
 
 The model was powerful, but the reports only got good when I gave it clear structure and checked everything it sent back. Most of the real work was iteration: reading a report, finding what was wrong, and changing the tool so it couldn't happen the same way again. Every business is different, and a good evaluation makes what's strong about each one easy to see. Making that evaluation consistent and trustworthy is the part of this project I enjoyed most, and it's the kind of work I want to keep doing.
+
+<!-- publish:end -->
 
 ---
 
