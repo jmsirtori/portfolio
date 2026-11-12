@@ -1,17 +1,27 @@
 import { useEffect, useRef } from 'react'
+import { marked } from 'marked'
 import TitleBar from '../components/TitleBar'
 import { HourglassIcon } from '../components/Icons'
+import source from '../../content/ignitia-case-study.md?raw'
 
-const sections = [
-  'Problem',
-  'Who It\'s For',
-  'Key Design Decisions',
-  'Building It',
-  'Testing',
-  'What I Learned',
-  'What\'s Next',
-  'Reflection',
-]
+// The draft file starts with internal working notes and ends with an asset
+// checklist; only the part between the title and the checklist is published.
+const START = '# An AI audit tool'
+const END = '### Assets to produce'
+const body = source
+  .slice(source.indexOf(START), source.indexOf(END))
+  .replace(/\n---\s*$/, '')
+
+// Trusted content (our own file), so rendering it as HTML is safe.
+const html = marked
+  .parse(body, { breaks: true })
+  // Wide tables scroll sideways on small screens; tabindex lets keyboard users scroll them.
+  .replace(/<table>/g, '<div class="case-table" role="region" aria-label="Table" tabindex="0"><table>')
+  .replace(/<\/table>/g, '</table></div>')
+  // Unfinished parts of the draft show as visible placeholders.
+  .replace(/<p>\[FILL:([\s\S]*?)\]<\/p>/g, '<p class="case-placeholder">To come:$1</p>')
+  // External links open in a new tab.
+  .replace(/<a href="http/g, '<a target="_blank" rel="noopener noreferrer" href="http')
 
 export default function Ignitia({ onClose }) {
   const closeRef = useRef(null)
@@ -77,20 +87,11 @@ export default function Ignitia({ onClose }) {
           ignitia_seo_auditor.case — Case Study
         </TitleBar>
         <div className="case-body">
-          <div className="case-in-progress">
-            <p><HourglassIcon width={16} height={16} />Case study in progress</p>
-            <strong>Full write-up coming December 5, 2026</strong>
-          </div>
-          <ol className="case-sections" aria-label="Case study sections">
-            {sections.map((section, i) => (
-              <li key={section}>
-                <span className="section-num" aria-hidden="true">
-                  {String(i + 1).padStart(2, '0')}
-                </span>
-                {section}
-              </li>
-            ))}
-          </ol>
+          <p className="case-draft-banner">
+            <HourglassIcon width={16} height={16} />
+            Draft · final version December 5, 2026
+          </p>
+          <article className="case-content" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
       </div>
     </div>

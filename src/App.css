@@ -383,6 +383,106 @@
   min-width: 24px;
 }
 
+/* ── Case study content: plain and readable (no retro styling) ── */
+.case-draft-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 2px dashed var(--gray-mid);
+  padding: 8px 12px;
+  margin-bottom: 28px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--gray-mid);
+}
+
+.case-content {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #1a1a1a;
+}
+
+.case-content > * + * {
+  margin-top: 1em;
+}
+
+.case-content h1 {
+  font-size: 1.75rem;
+  line-height: 1.25;
+  margin-bottom: 0.75em;
+}
+
+.case-content h2 {
+  font-family: var(--font-mono);
+  font-size: 1.125rem;
+  margin-top: 2.5em;
+  padding-top: 1em;
+  border-top: 2px solid var(--black);
+}
+
+.case-content h3 {
+  font-size: 1rem;
+  margin-top: 1.75em;
+}
+
+.case-content ul,
+.case-content ol {
+  padding-left: 1.4em;
+}
+
+.case-content li + li,
+.case-content li > ul {
+  margin-top: 0.4em;
+}
+
+.case-content a {
+  color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+.case-content code {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: #f0f0f0;
+  padding: 1px 4px;
+}
+
+.case-table {
+  overflow-x: auto;
+  border: 1px solid #c8c8c8;
+}
+
+.case-table table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 560px;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.case-table th,
+.case-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 10px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.case-table th {
+  background: #f0f0f0;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.case-placeholder {
+  border: 2px dashed #c8c8c8;
+  padding: 12px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  color: var(--gray-mid);
+}
+
 @media (max-width: 600px) {
   .desktop {
     margin: 16px auto;
