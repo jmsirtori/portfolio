@@ -1,6 +1,6 @@
 /* ── Desktop shell ── */
 .desktop {
-  max-width: 900px;
+  max-width: 1040px;
   margin: 32px auto;
   padding: 0 16px 64px;
 }
@@ -184,7 +184,7 @@
 .folder-grid {
   padding: 24px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
 }
 

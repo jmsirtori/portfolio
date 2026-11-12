@@ -74,7 +74,7 @@ export default function App() {
               hook="The audit tool I built to stop guessing"
               properties="2026  ·  Tool Design  ·  End-to-end"
               status="in-progress"
-              statusLabel="Case study in progress — Dec 5"
+              statusLabel="Full case study on Dec 5"
               previewText="SEO Auditor · React + Vercel · Anthropic API"
               onClick={() => openCaseStudy('ignitia')}
             />
