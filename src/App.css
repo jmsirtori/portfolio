@@ -6,12 +6,6 @@
 }
 
 /* ── Window chrome ── */
-.window {
-  border: var(--border-solid);
-  box-shadow: var(--shadow-hard);
-  background: var(--white);
-}
-
 .title-bar {
   background: var(--accent);
   color: var(--accent-text);
@@ -332,55 +326,6 @@
 
 .case-body {
   padding: 32px;
-}
-
-.case-in-progress {
-  border: 2px dashed var(--gray-mid);
-  padding: 24px;
-  text-align: center;
-  margin-bottom: 32px;
-}
-
-.case-in-progress p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--gray-mid);
-  margin-bottom: 4px;
-}
-
-.case-in-progress strong {
-  font-family: var(--font-mono);
-  font-size: 1rem;
-  color: var(--black);
-}
-
-.case-sections {
-  list-style: none;
-}
-
-.case-sections li {
-  padding: 12px 0;
-  border-bottom: 1px solid #e5e5e5;
-  font-family: var(--font-mono);
-  font-size: 0.875rem;
-  color: var(--gray-mid);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.case-sections li:last-child {
-  border-bottom: none;
-}
-
-.section-num {
-  color: var(--black);
-  font-weight: 700;
-  min-width: 24px;
 }
 
 /* ── Case study content: plain and readable (no retro styling) ── */

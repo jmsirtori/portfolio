@@ -5,12 +5,11 @@ import { HourglassIcon } from '../components/Icons'
 import source from '../../content/ignitia-case-study.md?raw'
 
 // The draft file starts with internal working notes and ends with an asset
-// checklist; only the part between the title and the checklist is published.
-const START = '# An AI audit tool'
-const END = '### Assets to produce'
-const body = source
-  .slice(source.indexOf(START), source.indexOf(END))
-  .replace(/\n---\s*$/, '')
+// checklist; only the part between the publish markers is published.
+// vite.config.js fails the build if either marker is missing.
+const START = '<!-- publish:start -->'
+const END = '<!-- publish:end -->'
+const body = source.slice(source.indexOf(START) + START.length, source.indexOf(END))
 
 // Trusted content (our own file), so rendering it as HTML is safe.
 const html = marked
