@@ -20,11 +20,16 @@ Comandos: `npm run dev` · `npm run build` · `npm run lint` · `npm run preview
 ## Estructura
 - `src/App.jsx` — shell principal (explorador de archivos).
 - `src/components/FolderCard.jsx` — carpeta de proyecto (abierta / locked).
-- `src/components/PreviouslyAt.jsx` — barra "Previously at".
-- `src/cases/Ignitia.jsx` — case study de Ignitia.
+- `src/components/PreviouslyAt.jsx` — ventana `background.txt`: fila "Previously at" + fila "Education".
+- `src/components/TitleBar.jsx` — title bar estilo Win95 (controles a la derecha; solo ✕ es funcional, ≥24px).
+- `src/components/Icons.jsx` — íconos pixel-art SVG (folder, lock, hourglass). No usar emojis como íconos.
+- `public/og-image.png` — imagen de link preview 1200×630.
+- `src/cases/Ignitia.jsx` — case study de Ignitia. Deep link: `/#ignitia` (Back del navegador lo cierra).
 
 ## Concepto visual
 Explorador de archivos retro 90s/2000s, **solo en el shell**. El contenido de cada case study va limpio y legible.
+
+Metáfora: Windows 95 (azul `#000080`, gris `#c0c0c0`, botones `_ □ ✕` a la derecha). Mono: `ui-monospace`/Cascadia/Consolas. Texto mínimo 12px.
 
 Las 4 reglas CSS del shell:
 1. Border sólido.
@@ -35,7 +40,8 @@ Las 4 reglas CSS del shell:
 ## Scope V1
 - **Ignitia SEO Auditor**: case study completo.
 - **Toronto Bike Repair**: carpeta locked, "In Progress".
-- **Barra "Previously at"**: Universal Pictures, PepsiCo, U of T, Ignitia.
+- **Barra "Previously at"**: Universal Pictures, PepsiCo, Ignitia.
+- **Education**: Tecnológico de Monterrey, University of Toronto.
 
 ### Entregable del viernes 14 nov
 Shell desplegado con:

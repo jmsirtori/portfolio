@@ -1,23 +1,55 @@
-import { lazy, Suspense, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
 import './App.css'
 import PreviouslyAt from './components/PreviouslyAt'
 import FolderCard from './components/FolderCard'
+import TitleBar from './components/TitleBar'
 
 const IgnitiaCase = lazy(() => import('./cases/Ignitia'))
 
+// Case studies are deep-linkable via the URL hash (e.g. /#ignitia),
+// so they can be shared directly and the browser Back button closes them.
+const CASES = ['ignitia']
+const caseFromHash = () => {
+  const id = window.location.hash.slice(1)
+  return CASES.includes(id) ? id : null
+}
+
 export default function App() {
-  const [openCase, setOpenCase] = useState(null)
+  const [openCase, setOpenCase] = useState(caseFromHash)
+  // True when the case was opened by clicking a folder (so closing can go Back
+  // instead of leaving a duplicate history entry).
+  const openedInApp = useRef(false)
+
+  useEffect(() => {
+    const onHashChange = () => {
+      const id = caseFromHash()
+      if (!id) openedInApp.current = false
+      setOpenCase(id)
+    }
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  const openCaseStudy = (id) => {
+    openedInApp.current = true
+    window.location.hash = id
+  }
+
+  const closeCaseStudy = useCallback(() => {
+    if (openedInApp.current) {
+      window.history.back()
+    } else {
+      // Landed directly on /#ignitia: drop the hash without leaving the site.
+      window.history.replaceState(null, '', window.location.pathname + window.location.search)
+      setOpenCase(null)
+    }
+  }, [])
 
   return (
     <div className="desktop">
       {/* Header */}
       <header className="desktop-header">
-        <div className="title-bar">
-          <div className="title-bar-dots" aria-hidden="true">
-            <span /><span /><span />
-          </div>
-          juan_manuel_sirtori — portfolio v1
-        </div>
+        <TitleBar>juan_manuel_sirtori — portfolio v1</TitleBar>
         <div className="desktop-intro">
           <h1>Juan Manuel Sirtori</h1>
           <p className="role">UX &amp; Product Designer</p>
@@ -27,7 +59,7 @@ export default function App() {
         </div>
       </header>
 
-      {/* Previously at */}
+      {/* Experience & education */}
       <PreviouslyAt />
 
       {/* File explorer */}
@@ -44,7 +76,7 @@ export default function App() {
               status="in-progress"
               statusLabel="Case study in progress — Dec 5"
               previewText="SEO Auditor · React + Vercel · Anthropic API"
-              onClick={() => setOpenCase('ignitia')}
+              onClick={() => openCaseStudy('ignitia')}
             />
           </div>
           <div role="listitem">
@@ -63,7 +95,7 @@ export default function App() {
       {/* Case study overlay */}
       {openCase === 'ignitia' && (
         <Suspense fallback={null}>
-          <IgnitiaCase onClose={() => setOpenCase(null)} />
+          <IgnitiaCase onClose={closeCaseStudy} />
         </Suspense>
       )}
     </div>

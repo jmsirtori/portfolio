@@ -17,24 +17,64 @@
   color: var(--accent-text);
   font-family: var(--font-mono);
   font-size: 0.8125rem;
-  padding: 4px 10px;
+  padding: 3px 4px 3px 10px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 8px;
   user-select: none;
 }
 
-.title-bar-dots {
-  display: flex;
-  gap: 4px;
+.title-bar-text {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.title-bar-dots span {
-  width: 10px;
-  height: 10px;
-  border: 1px solid var(--accent-text);
-  display: block;
-  background: var(--accent);
+.title-bar-controls {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+/* Win95 bevel: light top/left, dark bottom/right — hard, no blur */
+.title-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 18px;
+  background: var(--shell-bg);
+  color: var(--black);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  box-shadow: inset -1px -1px 0 var(--black), inset 1px 1px 0 var(--white);
+}
+
+/* The only real control: meets WCAG 2.2 target size (≥ 24×24 CSS px) */
+.title-bar-close {
+  width: 28px;
+  height: 24px;
+  margin-left: 2px;
+  border: none;
+  cursor: pointer;
+  font-size: 0.875rem;
+}
+
+.title-bar-close:hover {
+  background: var(--white);
+}
+
+.title-bar-close:active {
+  box-shadow: inset 1px 1px 0 var(--black), inset -1px -1px 0 var(--white);
+}
+
+.title-bar-close:focus-visible {
+  outline: 3px solid var(--white);
+  outline-offset: 1px;
 }
 
 /* ── Header / intro ── */
@@ -84,10 +124,15 @@
 
 .previously-at-inner {
   padding: 12px 24px;
-  display: flex;
-  align-items: center;
-  gap: 24px;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 8px;
+}
+
+.previously-at-row {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  align-items: baseline;
+  gap: 12px;
 }
 
 .previously-at-label {
@@ -101,7 +146,7 @@
   list-style: none;
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 6px 20px;
   flex-wrap: wrap;
 }
 
@@ -180,13 +225,12 @@
 }
 
 .folder-icon {
-  font-size: 1.25rem;
-  line-height: 1;
+  flex-shrink: 0;
 }
 
 .folder-filename {
   font-family: var(--font-mono);
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   color: var(--black);
   white-space: nowrap;
   overflow: hidden;
@@ -210,7 +254,7 @@
 
 .folder-preview-placeholder {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--gray-mid);
   text-align: center;
   padding: 8px;
@@ -227,16 +271,18 @@
 
 .folder-properties {
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   color: var(--gray-mid);
   margin-bottom: 10px;
 }
 
 .folder-status {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-family: var(--font-mono);
-  font-size: 0.6875rem;
-  padding: 2px 8px;
+  font-size: 0.75rem;
+  padding: 3px 8px;
   border: 1px solid var(--black);
 }
 
@@ -273,32 +319,6 @@
   background: var(--white);
 }
 
-.case-title-bar {
-  background: var(--accent);
-  color: var(--accent-text);
-  font-family: var(--font-mono);
-  font-size: 0.8125rem;
-  padding: 4px 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.case-close-btn {
-  background: var(--shell-bg);
-  border: 1px solid var(--black);
-  color: var(--black);
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  padding: 1px 6px;
-  cursor: pointer;
-  line-height: 1.4;
-}
-
-.case-close-btn:hover {
-  background: var(--white);
-}
-
 .case-body {
   padding: 32px;
 }
@@ -311,6 +331,10 @@
 }
 
 .case-in-progress p {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 0.875rem;
   color: var(--gray-mid);
@@ -359,7 +383,13 @@
   }
 
   .previously-at-inner {
+    padding: 12px 16px;
     gap: 12px;
+  }
+
+  .previously-at-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 
   .folder-grid {

@@ -1,6 +1,8 @@
+import { FolderIcon, LockIcon, HourglassIcon } from './Icons'
+
 const statusIcons = {
-  'in-progress': '🚧',
-  locked: '🔒',
+  'in-progress': HourglassIcon,
+  locked: LockIcon,
 }
 
 export default function FolderCard({
@@ -13,6 +15,8 @@ export default function FolderCard({
   onClick,
 }) {
   const isLocked = status === 'locked'
+  const StatusIcon = statusIcons[status]
+  const TabIcon = isLocked ? LockIcon : FolderIcon
 
   // Locked folders stay focusable (aria-disabled instead of disabled) so
   // keyboard and screen reader users still discover them.
@@ -29,9 +33,7 @@ export default function FolderCard({
       }
     >
       <div className="folder-tab">
-        <span className="folder-icon" aria-hidden="true">
-          {isLocked ? '🔒' : '📁'}
-        </span>
+        <TabIcon className="folder-icon" />
         <span className="folder-filename">{title}</span>
       </div>
       <div className="folder-body">
@@ -43,7 +45,7 @@ export default function FolderCard({
         <p className="folder-hook">{hook}</p>
         <p className="folder-properties">{properties}</p>
         <span className={`folder-status ${status}`}>
-          <span aria-hidden="true">{statusIcons[status]} </span>
+          {StatusIcon && <StatusIcon width={14} height={14} />}
           {statusLabel}
         </span>
       </div>

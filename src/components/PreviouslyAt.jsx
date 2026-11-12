@@ -1,27 +1,34 @@
-const companies = [
-  'Universal Pictures',
-  'PepsiCo',
-  'University of Toronto',
-  'Ignitia',
+import TitleBar from './TitleBar'
+
+const rows = [
+  {
+    label: 'Previously at:',
+    items: ['Universal Pictures', 'PepsiCo', 'Ignitia'],
+  },
+  {
+    label: 'Education:',
+    items: ['Tecnológico de Monterrey', 'University of Toronto'],
+  },
 ]
 
 export default function PreviouslyAt() {
   return (
-    <section className="previously-at" aria-label="Previous experience">
-      <div className="title-bar">
-        <div className="title-bar-dots" aria-hidden="true">
-          <span /><span /><span />
-        </div>
-        previously_at.txt
-      </div>
-      <div className="previously-at-inner">
-        <span className="previously-at-label">Previously at:</span>
-        <ul className="previously-at-list">
-          {companies.map((name) => (
-            <li key={name}>{name}</li>
-          ))}
-        </ul>
-      </div>
+    <section className="previously-at" aria-label="Experience and education">
+      <TitleBar>background.txt</TitleBar>
+      <dl className="previously-at-inner">
+        {rows.map(({ label, items }) => (
+          <div className="previously-at-row" key={label}>
+            <dt className="previously-at-label">{label}</dt>
+            <dd>
+              <ul className="previously-at-list">
+                {items.map((name) => (
+                  <li key={name}>{name}</li>
+                ))}
+              </ul>
+            </dd>
+          </div>
+        ))}
+      </dl>
     </section>
   )
 }

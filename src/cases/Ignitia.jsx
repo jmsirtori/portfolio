@@ -1,4 +1,6 @@
 import { useEffect, useRef } from 'react'
+import TitleBar from '../components/TitleBar'
+import { HourglassIcon } from '../components/Icons'
 
 const sections = [
   'Problem',
@@ -62,24 +64,21 @@ export default function Ignitia({ onClose }) {
       className="case-overlay"
       role="dialog"
       aria-modal="true"
-      aria-label="Ignitia SEO Auditor — Case Study"
+      aria-labelledby="ignitia-dialog-title"
       onClick={(e) => { if (e.target === e.currentTarget) onClose() }}
     >
       <div className="case-window" ref={windowRef}>
-        <div className="case-title-bar">
-          <span>ignitia_seo_auditor.case — Case Study</span>
-          <button
-            ref={closeRef}
-            className="case-close-btn"
-            onClick={onClose}
-            aria-label="Close case study"
-          >
-            ✕
-          </button>
-        </div>
+        <TitleBar
+          id="ignitia-dialog-title"
+          onClose={onClose}
+          closeRef={closeRef}
+          closeLabel="Close case study"
+        >
+          ignitia_seo_auditor.case — Case Study
+        </TitleBar>
         <div className="case-body">
           <div className="case-in-progress">
-            <p><span aria-hidden="true">🚧 </span>Case study in progress</p>
+            <p><HourglassIcon width={16} height={16} />Case study in progress</p>
             <strong>Full write-up coming December 5, 2026</strong>
           </div>
           <ol className="case-sections" aria-label="Case study sections">
