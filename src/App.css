@@ -154,19 +154,20 @@
   font-family: inherit;
 }
 
-.folder-card:hover:not(:disabled) {
+.folder-card:hover:not([aria-disabled="true"]) {
   transform: translate(-2px, -2px);
   box-shadow: var(--shadow-hard);
 }
 
-.folder-card:active:not(:disabled) {
+.folder-card:active:not([aria-disabled="true"]) {
   transform: translate(0, 0);
   box-shadow: none;
 }
 
-.folder-card:disabled {
+/* Locked: muted via dashed border, not opacity, so text keeps full contrast */
+.folder-card[aria-disabled="true"] {
   cursor: not-allowed;
-  opacity: 0.75;
+  border-style: dashed;
 }
 
 .folder-tab {
@@ -247,8 +248,8 @@
 
 .folder-status.locked {
   background: var(--shell-bg);
-  border-color: var(--gray-mid);
-  color: var(--gray-mid);
+  border-color: var(--black);
+  color: var(--black);
 }
 
 /* ── Case study overlay ── */

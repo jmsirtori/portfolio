@@ -1,16 +1,22 @@
-# React + Vite
+# Juan Manuel Sirtori — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+UX & Product Design portfolio, built as a 90s/2000s-style file explorer. The retro look lives only in the shell; case studies stay clean and readable.
 
-Currently, two official plugins are available:
+**Live:** https://juansirtori.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Case studies
+| Folder | Status |
+| --- | --- |
+| `ignitia_seo_auditor` | Full case study in progress — Dec 5, 2026 |
+| `toronto_bike_repair` | Coming soon |
 
-## React Compiler
+## Built with
+- React + Vite, with case studies lazy-loaded (`React.lazy`)
+- Plain CSS: solid borders, hard shadows without blur, monospace labels
+- Accessibility first: semantic buttons, full keyboard navigation, focus-trapped dialogs, WCAG AA contrast
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Run locally
+```bash
+npm install
+npm run dev
+```
