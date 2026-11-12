@@ -20,17 +20,14 @@ export default function FolderCard({
 
   // Locked folders stay focusable (aria-disabled instead of disabled) so
   // keyboard and screen reader users still discover them.
+  // No aria-label: the visible text is the accessible name (WCAG 2.5.3 Label
+  // in Name), so voice-control users can activate it by what they see.
   return (
     <button
       type="button"
       className="folder-card"
       onClick={isLocked ? undefined : onClick}
       aria-disabled={isLocked || undefined}
-      aria-label={
-        isLocked
-          ? `${title}: ${hook}. ${statusLabel}`
-          : `Open ${title} case study: ${hook}. ${statusLabel}`
-      }
     >
       <div className="folder-tab">
         <TabIcon className="folder-icon" />

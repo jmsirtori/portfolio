@@ -71,7 +71,7 @@ export default function App() {
           <div role="listitem">
             <FolderCard
               title="ignitia_seo_auditor"
-              hook="The audit tool I built to stop guessing"
+              hook="An AI audit tool, and the QA process that keeps it honest"
               properties="2026  ·  Tool Design  ·  End-to-end"
               status="in-progress"
               statusLabel="Full case study on Dec 5"

@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Internal strategy notes (not public)
+content/case-study-plan.md

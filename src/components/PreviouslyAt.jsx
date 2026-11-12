@@ -9,11 +9,18 @@ const rows = [
     label: 'Education:',
     items: ['Tecnológico de Monterrey', 'University of Toronto'],
   },
+  {
+    label: 'Contact:',
+    items: [
+      { name: 'LinkedIn', href: 'https://www.linkedin.com/in/jmsirtori/' },
+      { name: 'juansirtori@gmail.com', href: 'mailto:juansirtori@gmail.com' },
+    ],
+  },
 ]
 
 export default function PreviouslyAt() {
   return (
-    <section className="previously-at" aria-label="Experience and education">
+    <section className="previously-at" aria-label="Experience, education and contact">
       <TitleBar>background.txt</TitleBar>
       <dl className="previously-at-inner">
         {rows.map(({ label, items }) => (
@@ -21,9 +28,15 @@ export default function PreviouslyAt() {
             <dt className="previously-at-label">{label}</dt>
             <dd>
               <ul className="previously-at-list">
-                {items.map((name) => (
-                  <li key={name}>{name}</li>
-                ))}
+                {items.map((item) =>
+                  typeof item === 'string' ? (
+                    <li key={item}>{item}</li>
+                  ) : (
+                    <li key={item.name}>
+                      <a href={item.href}>{item.name}</a>
+                    </li>
+                  )
+                )}
               </ul>
             </dd>
           </div>

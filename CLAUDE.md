@@ -61,8 +61,10 @@ Problem → Who It's For → Key Design Decisions → Building It → Testing �
 ### Contexto de Ignitia (para el case study)
 Micro-consultoría de performance digital de Juan (getignitia.com). Tiene 3 piezas:
 1. **Landing:** HTML plano en Netlify.
-2. **Herramienta pública `/audit`:** lead magnet. Usa Claude Haiku con web search, da un friction score de 1 a 10 y muestra 2 problemas. Los leads se guardan en Notion.
-3. **App interna `flow-auditor.vercel.app`:** React + Vite + Supabase + Claude Sonnet. Incluye historial de clientes, re-auditorías comparativas, reporte de 4 secciones, 5 quick wins y es bilingüe ES/EN.
+2. **Herramienta pública `/audit`:** lead magnet. Usa Claude Haiku con web search, da el Digital Presence Score (1 a 10) y muestra 2 problemas. Los leads se guardan en Notion.
+3. **App interna `flow-auditor.vercel.app`:** React + Vite + Supabase + Claude Sonnet. Incluye historial de clientes, re-auditorías comparativas, reporte de 4 secciones, 5 quick wins, PageSpeed Insights y vista de costos. Solo en español (lo bilingüe ES/EN es el sitio web de Ignitia, no la herramienta).
+
+**Nombre del score:** "Digital Presence Score", 1 = muy débil, 10 = excelente. Es el mismo score en la herramienta pública y en la interna; no usar "friction score".
 
 Marca: fondo `#060a10`, naranja `#FF4500`, estética terminal, todo en mayúsculas.
 
